@@ -8,7 +8,7 @@ import { toast } from "sonner";
 import { useUrlContext } from "./Contexts/UrlContext";
 
 
-const serverUrl = "http://localhost:8000";
+const serverUrl = "https://link-zap.onrender.com";
 
 const UrlList = ({ shortenedUrl }) => {
     const { urlList, setUrlList } = useUrlContext();

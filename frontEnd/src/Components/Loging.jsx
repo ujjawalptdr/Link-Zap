@@ -5,7 +5,7 @@ import { UserContext } from "./Contexts/UserContext";
 import { toast } from "sonner";
 import { motion } from "framer-motion";
 
-const serverUrl = "http://localhost:8000";
+const serverUrl = "https://link-zap.onrender.com";
 
 const Login = ({ setLogin, setSignup }) => {
   const { loginUser } = useContext(UserContext); // Get loginUser function from context

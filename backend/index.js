@@ -32,7 +32,7 @@ app.use(cookieParser());
 
 //For allowing the request from FrontEnd
 const corsOptions = {
-    origin: "http://localhost:5173",
+    origin: "https://link-zap.onrender.com",
     credentials: true,
 };
 

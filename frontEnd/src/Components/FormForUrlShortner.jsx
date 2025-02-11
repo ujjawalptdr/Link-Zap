@@ -5,7 +5,7 @@ import CopyButton from "./CopyButton";
 import { toast } from "sonner";
 import { IoClose } from "react-icons/io5";
 
-const serverUrl = "http://localhost:8000";
+const serverUrl = "https://link-zap.onrender.com";
 
 const FormForUrlShortner = ({ shortenedUrl, setShortenedUrl }) => {
   const [fullUrl, setFullUrl] = useState("");

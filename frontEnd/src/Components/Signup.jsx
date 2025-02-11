@@ -4,7 +4,7 @@ import axios from "axios"; // Ensure axios is installed and imported
 import { toast } from "sonner";
 import { motion } from "framer-motion";
 
-const serverUrl = "http://localhost:8000";
+const serverUrl = "https://link-zap.onrender.com";
 
 const Signup = ({ setLogin, login, signup, setSignup }) => {
     const [formData, setFormData] = useState({
