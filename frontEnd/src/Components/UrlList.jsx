@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import CopyButton from "./CopyButton";
-import { serverUrl } from "../helpers/Constants";
 import axios from "axios";
 import { MdDelete } from "react-icons/md";
 import { BiLoaderAlt } from "react-icons/bi";
@@ -9,7 +8,7 @@ import { toast } from "sonner";
 import { useUrlContext } from "./Contexts/UrlContext";
 
 
-
+const serverUrl = "http://localhost:8000";
 
 const UrlList = ({ shortenedUrl }) => {
     const { urlList, setUrlList } = useUrlContext();

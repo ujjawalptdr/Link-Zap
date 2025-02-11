@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
 import { IoClose } from "react-icons/io5";
 import axios from "axios"; // Ensure axios is installed and imported
-import { serverUrl } from "../helpers/Constants";
 import { UserContext } from "./Contexts/UserContext";
 import { toast } from "sonner";
 import { motion } from "framer-motion";
+
+const serverUrl = "http://localhost:8000";
 
 const Login = ({ setLogin, setSignup }) => {
   const { loginUser } = useContext(UserContext); // Get loginUser function from context

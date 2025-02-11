@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { TbLoader } from "react-icons/tb";
-import { serverUrl } from "../helpers/Constants";
 import CopyButton from "./CopyButton";
 import { toast } from "sonner";
 import { IoClose } from "react-icons/io5";
 
-
+const serverUrl = "http://localhost:8000";
 
 const FormForUrlShortner = ({ shortenedUrl, setShortenedUrl }) => {
   const [fullUrl, setFullUrl] = useState("");

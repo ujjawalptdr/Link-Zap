@@ -5,11 +5,10 @@ import { Button } from "./ui/button";
 import { LogOut } from "lucide-react";
 import { UserContext } from "./Contexts/UserContext";
 import axios from "axios";
-import { serverUrl } from "@/helpers/Constants";
 import { toast } from "sonner";
 import { useUrlContext } from "./Contexts/UrlContext";
 
-
+const serverUrl = "http://localhost:8000";
 
 const PopoverAvatar = () => {
     const { user, logoutUser } = useContext(UserContext);
