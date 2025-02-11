@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon backend/index.js",
-    "build":"npm install && npm install --prefix frontEnd && npm run build --prefix frontEnd",
-    "start":"nodemon backend/index.js"
+    "build": "npm install && npm install --prefix frontEnd && npm run build --prefix frontEnd",
+    "start": "nodemon backend/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +19,7 @@
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.9.5",
-    "nanoid": "^5.0.9"
+    "nanoid": "^5.0.9",
+    "nodemon": "^3.1.9"
   }
 }
