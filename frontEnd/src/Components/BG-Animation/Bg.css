@@ -1,0 +1,140 @@
+@keyframes animate {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+    border-radius: 0;
+  }
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+    border-radius: 50%;
+  }
+}
+
+@keyframes changeColor {
+  0% {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  25% {
+    background: rgba(255, 99, 71, 0.4); /* Tomato */
+  }
+  50% {
+    background: rgba(144, 238, 144, 0.4); /* LightGreen */
+  }
+  75% {
+    background: rgba(30, 144, 255, 0.4); /* DodgerBlue */
+  }
+  100% {
+    background: rgba(255, 255, 255, 0.2); /* Back to default */
+  }
+}
+
+/* Reset margin and padding for the entire document */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  box-sizing: border-box;
+}
+
+/* Apply box-sizing globally */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.background {
+  position: fixed;
+  width: 101vw; /* Fit exactly to the viewport width */
+  height: 100vh; /* Fit exactly to the viewport height */
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  background: #000000;
+  overflow: hidden;
+  z-index: -1; /* Ensure it stays in the background */
+}
+
+.background li {
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  animation: animate 19s linear infinite, changeColor 10s linear infinite; /* Added color animation */
+}
+
+.background li:nth-child(0) {
+  left: 46%;
+  width: 196px;
+  height: 196px;
+  bottom: -196px;
+  animation-delay: 1s, 0s; /* Randomize delay for color changes */
+}
+.background li:nth-child(1) {
+  left: 86%;
+  width: 147px;
+  height: 147px;
+  bottom: -147px;
+  animation-delay: 4s, 2s;
+}
+.background li:nth-child(2) {
+  left: 60%;
+  width: 161px;
+  height: 161px;
+  bottom: -161px;
+  animation-delay: 2s, 1s;
+}
+.background li:nth-child(3) {
+  left: 36%;
+  width: 139px;
+  height: 139px;
+  bottom: -139px;
+  animation-delay: 1s, 0.5s;
+}
+.background li:nth-child(4) {
+  left: 77%;
+  width: 167px;
+  height: 167px;
+  bottom: -167px;
+  animation-delay: 10s, 4s;
+}
+.background li:nth-child(5) {
+  left: 68%;
+  width: 173px;
+  height: 173px;
+  bottom: -173px;
+  animation-delay: 3s, 1.5s;
+}
+.background li:nth-child(6) {
+  left: 38%;
+  width: 171px;
+  height: 171px;
+  bottom: -171px;
+  animation-delay: 9s, 3s;
+}
+.background li:nth-child(7) {
+  left: 15%;
+  width: 194px;
+  height: 194px;
+  bottom: -194px;
+  animation-delay: 26s, 6s;
+}
+.background li:nth-child(8) {
+  left: 38%;
+  width: 129px;
+  height: 129px;
+  bottom: -129px;
+  animation-delay: 31s, 7s;
+}
+.background li:nth-child(9) {
+  left: 81%;
+  width: 139px;
+  height: 139px;
+  bottom: -139px;
+  animation-delay: 35s, 8s;
+}
