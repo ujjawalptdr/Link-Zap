@@ -6,7 +6,7 @@ const router = Router();
 
 router.route("/url/postUrl").post(isAuthenticated, handlePostUrl);
 
-router.route("/:shortId").get(isAuthenticated, handleGetShortId);
+router.route("/:shortId").get(handleGetShortId);
 
 router.route("/url/get").get(isAuthenticated, handleGetAllShortId);
 
