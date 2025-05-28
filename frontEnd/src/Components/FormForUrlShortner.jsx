@@ -37,32 +37,34 @@ const FormForUrlShortner = ({ shortenedUrl, setShortenedUrl }) => {
   };
 
   return (
-    <div className="max-w-lg mx-auto mt-20 p-6  shadow-xl shadow-slate-500 rounded-lg bg-transparent">
-      <h1 className="text-4xl font-bold text-white mb-4 text-center">
+    <div className="max-w-lg mx-auto mt-20 p-6 bg-transparent">
+      <h1 className="text-4xl font-bold text-white mb-6 text-center">
         Generate <span className="text-themeOrange">ShortURL</span>
       </h1>
-      <form onSubmit={onSubmitHandler}>
+
+      <form onSubmit={onSubmitHandler} className="space-y-4">
         <input
           type="text"
           placeholder="Enter your FullURL here..."
           value={fullUrl}
           onChange={(e) => setFullUrl(e.target.value)}
-          className="w-full px-4 py-2 border-2 rounded-lg focus:outline-none focus:border-orange-400 transition"
+          className="w-full px-4 py-3 border-2 border-slate-300 rounded-lg text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-400 placeholder:text-slate-400"
         />
+
         <button
           type="submit"
           disabled={isLoading}
-          className={`w-full mt-4 px-4 py-2 text-white font-medium rounded-lg transition 
-          ${isLoading
+          className={`w-full flex justify-center items-center gap-2 px-4 py-3 text-white font-semibold rounded-lg transition duration-300
+        ${isLoading
               ? "bg-gray-400 cursor-not-allowed"
-              : "bg-gradient-to-r from-blue-600 to-orange-600 hover:bg-slate-600"
+              : "bg-gradient-to-r from-blue-600 to-orange-600 hover:brightness-110"
             }`}
         >
           {isLoading ? (
-            <span className="flex justify-center items-center gap-2">
-              <TbLoader className="animate-spin size-6" />
-              Shortning..
-            </span>
+            <>
+              <TbLoader className="animate-spin size-5" />
+              Shortening...
+            </>
           ) : (
             "Shorten URL"
           )}
@@ -70,24 +72,31 @@ const FormForUrlShortner = ({ shortenedUrl, setShortenedUrl }) => {
       </form>
 
       {shortenedUrl && (
-        <div className="mt-4 p-3 bg-green-100 text-green-700 rounded-lg text-center transition-all duration-500 ease-out transform opacity-0 translate-y-[-10px] animate-show">
-          <div className="flex justify-center">
-            <p className="flex-1 ml-4">Shortened URL</p>
-            <div className=" items-end " ><IoClose size={20} className="cursor-pointer" onClick={() => setShortenedUrl("")} /></div>
-
+        <div className="mt-6 p-4 rounded-lg bg-green-100 text-green-800 shadow-md transition-all duration-500 animate-fadeInUp">
+          <div className="flex justify-between items-center mb-2">
+            <p className="font-semibold">Shortened URL</p>
+            <IoClose
+              size={20}
+              className="cursor-pointer hover:text-red-500"
+              onClick={() => setShortenedUrl("")}
+            />
           </div>
-          <a
-            href={shortenedUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-500 underline hover:text-blue-700"
-          >
-            {shortenedUrl}
-          </a>
-          <CopyButton textToCopy={shortenedUrl} /> {/* Add CopyButton */}
+
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <a
+              href={shortenedUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline break-all hover:text-blue-800"
+            >
+              {shortenedUrl}
+            </a>
+            <CopyButton textToCopy={shortenedUrl} />
+          </div>
         </div>
       )}
     </div>
+
   );
 };
 

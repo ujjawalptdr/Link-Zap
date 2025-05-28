@@ -16,7 +16,6 @@ const UrlList = ({ shortenedUrl }) => {
     const [loading, setLoading] = useState(false);
 
 
-
     useEffect(() => {
 
         const fetchData = async () => {
@@ -62,65 +61,72 @@ const UrlList = ({ shortenedUrl }) => {
 
         <div className="h-full max-w-7xl px-4 py-10 lg:p-14 mt-5 mx-auto bg-transparent">
             {
-                (urlList.length != 0) ?
+                loading ? (
+                    <div className="flex justify-center items-center h-48">
+                        <BiLoaderAlt className="w-16 h-16 text-slate-400 animate-spin" />
+                    </div>
+                ) : urlList.length !== 0 ? (
                     <div>
-                        <h1 className="text-3xl lg:text-4xl text-themeOrange font-bold  mb-6 sm:px-10 lg:px-0">
+                        <h1 className="text-3xl lg:text-4xl text-themeOrange font-bold mb-6 sm:px-10 lg:px-0">
                             <span className="text-white">My</span> URLs
                         </h1>
 
-                        <div className="mx-auto lg:px-2 flex justify-center">
+                        <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
                             {
-                                loading && <BiLoaderAlt className="size-20 animate-spin text-slate-400 mt-20" />
-                            }
-                            <div className="grid gap-8 lg:gap-x-12 lg:grid-cols-2">
-                                {
-                                    urlList ?
-                                        urlList.map((url) => {
-                                            return <div key={url._id} className="lg:max-w-xl bg-white shadow-xl px-6 py-6 rounded-md ">
-                                                <div className="flex flex-col gap-4">
-                                                    {/* Full URL */}
-                                                    <p className="break-all">
-                                                        <span className="text-orange-500 text-lg font-bold">
-                                                            Full-URL:
-                                                        </span>{" "}
-                                                        {url.redirectURL}
+                                urlList.map((url) => (
+                                    <div key={url._id} className="bg-white shadow-lg shadow-gray-400 hover:shadow-xl hover:shadow-gray-400 transition duration-300 rounded-lg p-6 flex flex-col justify-between hover:scale-105">
+                                        <div className="flex flex-col gap-4">
+                                            {/* Full URL */}
+                                            <p className="break-all text-gray-700 text-sm">
+                                                <span className="text-orange-600 font-semibold">Full URL:</span> {url.redirectURL}
+                                            </p>
 
-                                                    </p>
-                                                    {/* Short URL */}
-                                                    <div className="flex items-center justify-between gap-4">
-                                                        <p className="break-all w-full">
-                                                            <span className="text-green-500 text-lg font-bold">
-                                                                Short-URL:
-                                                            </span>{" "}
-                                                            <a
-                                                                href={`${serverUrl}/${url.shortId}`}
-                                                                target="_blank"
-                                                                rel="noopener noreferrer"
-                                                                className=" hover:underline break-all"
-                                                            >
-                                                                {`${serverUrl}/${url.shortId}`}
-                                                            </a>
-                                                        </p>
-                                                        <CopyButton textToCopy={`${serverUrl}/${url.shortId}`} />
-                                                    </div>
-                                                    {/* Total Clicks */}
-                                                    <p>
-                                                        <span className="font-bold text-black">Total-Clicks:</span> <span className="text-red-500 font-bold text-lg font-sans">{url.totalClicks}</span>
-                                                    </p>
-                                                    <div className="flex justify-end ">
-                                                        <button onClick={() => handleDeleteUrl(url.shortId)} className=" p-2 rounded-md shadow-md shadow-red-300"><MdDelete color="red" size={20} /></button>
-                                                    </div>
-                                                </div>
+                                            {/* Short URL */}
+                                            <div className="flex items-center justify-between gap-4">
+                                                <p className="break-all text-sm text-gray-700 w-full">
+                                                    <span className="text-green-600 font-semibold">Short URL:</span>{" "}
+                                                    <a
+                                                        href={`${serverUrl}/${url.shortId}`}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="text-blue-600 hover:underline"
+                                                    >
+                                                        {`${serverUrl}/${url.shortId}`}
+                                                    </a>
+                                                </p>
+                                                <CopyButton textToCopy={`${serverUrl}/${url.shortId}`} />
                                             </div>
-                                        }
-                                        ) : null
-                                }
 
-                            </div>
+                                            {/* Total Clicks */}
+                                            <p className="text-sm">
+                                                <span className="font-semibold text-gray-800">Total Clicks:</span>{" "}
+                                                <span className="text-red-600 font-bold">{url.totalClicks}</span>
+                                            </p>
+                                        </div>
+
+                                        {/* Delete Button */}
+                                        <div className="flex justify-end mt-4">
+                                            <button
+                                                onClick={() => handleDeleteUrl(url.shortId)}
+                                                className="p-2 rounded-full bg-red-100 hover:bg-red-200 transition duration-200"
+                                                title="Delete URL"
+                                            >
+                                                <MdDelete className="text-red-600" size={20} />
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))
+                            }
                         </div>
-                    </div> : null
+                    </div>
+                ) : (
+                    <div className="text-center text-gray-400 mt-20">
+                        <p>No URLs found. Start by creating one!</p>
+                    </div>
+                )
             }
-        </div >
+        </div>
+
 
     );
 };
